@@ -11,6 +11,10 @@ Route::get('/contoh1', function () {
     return view('lp3i');
 });
 
+// Route::get('/master', function () {
+//     return view('layout.master');
+// });
+
 //Modul Mahasiswa
 Route::get('/mahasiswa', [MahasiswaController::class, 'index']);
 Route::get('/mahasiswa/tambah', [MahasiswaController::class, 'create']);

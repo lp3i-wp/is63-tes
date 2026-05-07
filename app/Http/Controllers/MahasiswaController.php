@@ -79,7 +79,28 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //disini hasil eksekusi dari klik tombol simpan perubahan data di form mahasiswa.edit
+        $request->validate([
+            'nama' => 'required',
+            'nim' => 'required|numeric|digitsBetween:12,12',
+            'jurusan' => 'required',
+        ]);
+        $mahasiswa = Mahasiswa::find($id);
+        $mahasiswa->update([
+            'nama' => $request->nama,
+            'nim' => $request->nim,
+            'jurusan' => $request->jurusan,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'nohp' => $request->no_handphone,
+            'domisili' => $request->domisili,
+            'email' => $request->email,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'tahun_masuk' => $request->tahun_masuk,
+        ]);
+
+        return redirect('/mahasiswa')->with(['success' => 'Data mahasiswa berhasil diperbarui.']);
+
     }
 
     /**

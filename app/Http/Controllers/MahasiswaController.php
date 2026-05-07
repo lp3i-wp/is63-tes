@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Mahasiswa;
 
 class MahasiswaController extends Controller
 {
@@ -28,7 +29,29 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
+        //disini hasil eksekusi dari klik tombol simpan data di form mahasiswa.form
+        //kita akan menampilkan data yang diinputkan di form mahasiswa.form
+        $request->validate([
+            'nama' => 'required',
+            'nim' => 'required|numeric|digitsBetween:12,12',
+            'jurusan' => 'required',
+        ]);
 
+        $mahasiwa = Mahasiswa::create([
+            'nama' => $request->nama,
+            'nim' => $request->nim,
+            'jurusan' => $request->jurusan,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'nohp' => $request->no_handphone,
+            'domisili' => $request->domisili,
+            'email' => $request->email,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'tahun_masuk' => $request->tahun_masuk,
+        ]);
+
+        return view('mahasiswa.index')->with('success', 'Data mahasiswa berhasil ditambahkan.');
+        //return redirect()->route('mahasiswa.index')->with('success', 'Data mahasiswa berhasil ditambahkan.');
     }
 
     /**

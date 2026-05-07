@@ -50,7 +50,8 @@ class MahasiswaController extends Controller
             'tahun_masuk' => $request->tahun_masuk,
         ]);
 
-        return view('mahasiswa.index')->with('success', 'Data mahasiswa berhasil ditambahkan.');
+
+        return redirect('/mahasiswa')->with(['success' => 'Data mahasiswa berhasil ditambahkan.']);
         //return redirect()->route('mahasiswa.index')->with('success', 'Data mahasiswa berhasil ditambahkan.');
     }
 

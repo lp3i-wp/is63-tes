@@ -69,7 +69,9 @@ class MahasiswaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        //disini hasil eksekusi dari klik tombol edit data di form mahasiswa.index
+        $mahasiswa = Mahasiswa::find($id);
+        return view('mahasiswa.edit', compact('mahasiswa'));
     }
 
     /**

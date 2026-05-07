@@ -26,16 +26,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($mahasiswa as $item)
+                        @forelse ($mahasiswa as $x )
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
-                                <td>{{ $item->nama }}</td>
-                                <td>{{ $item->nim }}</td>
-                                <td>{{ $item->jurusan }}</td>
-                                <td>{{ $item->tempat_lahir }}, {{ $item->tanggal_lahir }}</td>
+                                <td>{{ $x->nama }}</td>
+                                <td>{{ $x->nim }}</td>
+                                <td>{{ $x->jurusan }}</td>
+                                <td>{{ $x->tempat_lahir }}, {{ $x->tanggal_lahir }}</td>
                                 <td>
-                                    <a href="/mahasiswa/edit/{{ $item->id }}" class="btn btn-outline-info">Edit</a>
-                                    <a href="/mahasiswa/hapus/{{ $item->id }}" class="btn btn-outline-danger" onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</a>
+                                    <a href="/mahasiswa/edit/{{ $x->id }}" class="btn btn-outline-info">Edit</a>
+                                    <a href="/mahasiswa/hapus/{{ $x->id }}" class="btn btn-outline-danger" onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</a>
                                 </td>
                             </tr>
 

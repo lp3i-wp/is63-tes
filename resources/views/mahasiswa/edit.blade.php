@@ -13,8 +13,9 @@
             <h6 class="m-0 font-weight-bold text-primary">Form Tambah Mahasiswa</h6>
         </div>
         <div class="card-body">
-            <form method="POST" action="/mahasiswa">
+            <form method="POST" action="/mahasiswa/{{ $mahasiswa->id }}">
                 @csrf
+                @method('PUT')
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">NIM</label>
                     <input type="text" value="{{ $mahasiswa->nim }}" name="nim" class="form-control @error('nim') is-invalid @enderror"
@@ -41,11 +42,11 @@
                     <label for="exampleInputEmail1" class="form-label">Jurusan</label>
                     <select name="jurusan" class="form-control @error('jurusan') is-invalid @enderror" id="">
                         <option value="">Pilih Jurusan</option>
-                        <option value="Informatika Komputer">Informatika Komputer</option>
-                        <option value="Sekretaris">Sekretaris</option>
-                        <option value="Komputer Akuntansi">Komputer Akuntansi</option>
-                        <option value="Manajemen Perkantoran">Manajemen Perkantoran</option>
-                        <option value="Komunikasi Bisnis Digital">Komunikasi Bisnis Digital</option>
+                        <option {{ $mahasiswa->jurusan == 'Informatika Komputer' ? 'selected' : '' }} value="Informatika Komputer">Informatika Komputer</option>
+                        <option {{ $mahasiswa->jurusan == 'Sekretaris' ? 'selected' : '' }} value="Sekretaris">Sekretaris</option>
+                        <option {{ $mahasiswa->jurusan == 'Komputer Akuntansi' ? 'selected' : '' }} value="Komputer Akuntansi">Komputer Akuntansi</option>
+                        <option {{ $mahasiswa->jurusan == 'Manajemen Perkantoran' ? 'selected' : '' }} value="Manajemen Perkantoran">Manajemen Perkantoran</option>
+                        <option {{ $mahasiswa->jurusan == 'Komunikasi Bisnis Digital' ? 'selected' : '' }} value="Komunikasi Bisnis Digital">Komunikasi Bisnis Digital</option>
                     </select>
                     @error('jurusan')
                         <div class="alert">
@@ -113,8 +114,8 @@
                     <label for="exampleInputEmail1" class="form-label">Jenis kelamin</label>
                     <select name="jenis_kelamin" class="form-control @error('jenis_kelamin') is-invalid @enderror" id="">
                         <option value="">Pilih Jenis Kelamin</option>
-                        <option value="Laki-laki">Laki-laki</option>
-                        <option value="Perempuan">Perempuan</option>
+                        <option {{ $mahasiswa->jenis_kelamin == 'Laki-laki' ? 'selected' : '' }} value="Laki-laki">Laki-laki</option>
+                        <option {{ $mahasiswa->jenis_kelamin == 'Perempuan' ? 'selected' : '' }} value="Perempuan">Perempuan</option>
                     </select>
                     @error('jenis_kelamin')
                         <div class="alert">

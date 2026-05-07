@@ -17,33 +17,34 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>NIM</th>
+                            <th>Jurusan</th>
+                            <th>Tempat, Tanggal Lahir</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
-                    <tfoot>
-                        <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
-                        </tr>
-                    </tfoot>
                     <tbody>
-                        <tr>
-                            <td>Tiger Nixon</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>2011/04/25</td>
-                            <td>$320,800</td>
-                        </tr>
+                        @forelse ($mahasiswa as $item)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $item->nama }}</td>
+                                <td>{{ $item->nim }}</td>
+                                <td>{{ $item->jurusan }}</td>
+                                <td>{{ $item->tempat_lahir }}, {{ $item->tanggal_lahir }}</td>
+                                <td>
+                                    <a href="/mahasiswa/edit/{{ $item->id }}" class="btn btn-outline-info">Edit</a>
+                                    <a href="/mahasiswa/hapus/{{ $item->id }}" class="btn btn-outline-danger" onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</a>
+                                </td>
+                            </tr>
+
+                        @empty
+                            <tr>
+                                <td colspan="6" class="text-center">Data mahasiswa tidak ditemukan</td>
+                            </tr>
+                        @endforelse
+
 
                     </tbody>
                 </table>

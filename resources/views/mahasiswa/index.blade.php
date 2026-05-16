@@ -35,7 +35,14 @@
                                 <td>{{ $x->tempat_lahir }}, {{ $x->tanggal_lahir }}</td>
                                 <td>
                                     <a href="/mahasiswa/edit/{{ $x->id }}" class="btn btn-outline-info">Edit</a>
-                                    <a href="/mahasiswa/hapus/{{ $x->id }}" class="btn btn-outline-danger" onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</a>
+
+                                    <form onclick="return confirm('Yakin data Ini Ingin Dihapus?')" action="/mahasiswa/{{ $x->id }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-outline-danger" type="submit">Hapus</button>
+                                    </form>
+
+                                    {{-- <a href="/mahasiswa/hapus/{{ $x->id }}" class="btn btn-outline-danger" onclick="return confirm('Yakin ingin menghapus data ini?')">Hapus</a> --}}
                                 </td>
                             </tr>
 
